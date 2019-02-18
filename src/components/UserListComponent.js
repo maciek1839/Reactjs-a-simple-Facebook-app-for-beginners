@@ -1,23 +1,25 @@
 import React, { Component, Fragment } from 'react';
-import { Row,Col,ListGroup, ListGroupItem, Collapse, Button, CardBody, Card, InputGroup, InputGroupAddon, InputGroupText, Input } from 'reactstrap';
-import { UserDetailsComponent } from './UserDetailsComponent'
+import { Card, CardBody, Col, Collapse, Input, InputGroup, ListGroup, ListGroupItem, Row } from 'reactstrap';
+import { UserDetailsComponent } from './UserDetailsComponent';
 
 
 export class UserListComponent extends Component {
 
     constructor(props) {
         super(props);
+        const users=this.mapUsersToListOfusers(props.users);
         this.state = {
-            users: this.mapUsersToListOfusers(props.users),
-            filteredUsers:this.mapUsersToListOfusers(props.users)
+            users: users,
+            filteredUsers: users
         }
     }
 
     mapUsersToListOfusers(users) {
-        return users.map(function (user) {
+        return users.map(function (user, index) {
             return {
                 "isCollapsed": false,
-                "user": user
+                "user": user,
+                "id": index
             };
         });
     }
@@ -26,11 +28,10 @@ export class UserListComponent extends Component {
         return `${user.name.first} ${user.name.last}`;
     }
 
-    toggleUser(elemIndex) {
-        console.log("Collapsed list element: " + elemIndex);
+    toggleUser(id) {
         this.setState({
             users: this.state.users.map((elem, index) => {
-                if (elemIndex === index) {
+                if (id === elem.id) {
                     elem.isCollapsed = !elem.isCollapsed
                 }
                 return elem;
@@ -39,7 +40,6 @@ export class UserListComponent extends Component {
     }
 
     filterUsers(inputValue){
-        console.log(inputValue);
         this.setState({
             filteredUsers: this.state.users.filter(e=>this.prepareUserTitleForList(e.user).includes(inputValue))
         });
@@ -61,7 +61,7 @@ export class UserListComponent extends Component {
                 <ListGroup>
                     {this.state.filteredUsers.map((e, key) =>
                         <Fragment key={key}>
-                            <ListGroupItem action onClick={() => this.toggleUser(key)}>{this.prepareUserTitleForList(e.user)}</ListGroupItem>
+                            <ListGroupItem className="pointer" action onClick={() => this.toggleUser(e.id)}>{this.prepareUserTitleForList(e.user)}</ListGroupItem>
                             <Collapse isOpen={e.isCollapsed} >
                                 <Card>
                                     <CardBody>

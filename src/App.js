@@ -1,15 +1,14 @@
-import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import './App.css';
 import axios from 'axios';
-import { UserListComponent } from './components/UserListComponent';
-import { SidebarComponent } from './components/SidebarComponent';
+import React, { Component, Fragment } from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Col, Container, Row } from 'reactstrap';
+import './App.css';
 import { InitPageComponent } from './components/InitPageComponent';
 import { NavbarComponent } from './components/NavbarComponent';
-import { Container, Row, Col } from 'reactstrap';
+import { UserListComponent } from './components/UserListComponent';
 
 class App extends Component {
-
+  
   static USER_NUMER = 26
   static TOP_USER_NUMER = 3
 
@@ -53,17 +52,13 @@ class App extends Component {
     return (
       <Fragment>
         <NavbarComponent></NavbarComponent>
-
         <Container>
           <Router>
             <Row>
-              <Col xs="1">
-                <SidebarComponent />
-              </Col>
-              <Col xs="11">
+              <Col xs="12">
                 <Fragment>
                   <Route exact path="/" component={() => <InitPageComponent topUsers={this.state.topUsers} />} />
-                  <Route path="/users" component={()=><UserListComponent users={this.state.users}/>}/>
+                  <Route path="/users" component={() => <UserListComponent users={this.state.users} />} />
                 </Fragment>
               </Col>
             </Row>

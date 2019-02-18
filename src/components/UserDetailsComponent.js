@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Card, CardImg, CardText, CardBody } from 'reactstrap';
+import { Card, CardImg, Col, Row } from 'reactstrap';
 
 export class UserDetailsComponent extends Component {
 
@@ -15,25 +15,13 @@ export class UserDetailsComponent extends Component {
                         <Col>{`Email: ${this.props.user.email}`}</Col>
                     </Row>
                     <Row>
-
-
-
                         <Col>{`City: ${this.props.user.location.city}`}</Col>
-
-
-
                     </Row>
                     <Row>
-
                         <Col>{`Post code: ${this.props.user.location.city}`}</Col>
-
-
                     </Row>
                     <Row>
-
                         <Col>{`State: ${this.props.user.location.state}`}</Col>
-
-
                     </Row>
                     <Row>
                         <Col>{`Street: ${this.props.user.location.street}`}</Col>
