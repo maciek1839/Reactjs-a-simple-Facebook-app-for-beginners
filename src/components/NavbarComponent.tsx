@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import { Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
 
-export class NavbarComponent extends Component {
+export type NavbarComponentState= {
+    isOpen:boolean
+}
 
-    constructor(props) {
+export type NavbarComponentProps= {
+    
+}
+
+export class NavbarComponent extends Component<NavbarComponentProps,NavbarComponentState> {
+
+    constructor(props:NavbarComponentProps) {
         super(props);
 
         this.toggle = this.toggle.bind(this);

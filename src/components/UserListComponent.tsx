@@ -1,11 +1,30 @@
 import React, { Component, Fragment } from 'react';
 import { Card, CardBody, Col, Collapse, Input, InputGroup, ListGroup, ListGroupItem, Row } from 'reactstrap';
 import { UserDetailsComponent } from './UserDetailsComponent';
+import { User } from '../types/user';
 
+export type UserListComponentProp = {
+    users: Array<User>
+}
 
-export class UserListComponent extends Component {
+export type UserListComponentState = {
+    users: Array<FilteredUser>,
+    filteredUsers: Array<FilteredUser>
+}
 
-    constructor(props) {
+export type FilteredUser = {
+    "isCollapsed": boolean,
+    "user": User,
+    "id": number
+}
+
+export class UserListComponent extends Component<UserListComponentProp, UserListComponentState> {
+
+    static defaultProps = { 
+        users: [] 
+    }
+
+    constructor(props:UserListComponentProp) {
         super(props);
         const users=this.mapUsersToListOfusers(props.users);
         this.state = {
@@ -14,7 +33,7 @@ export class UserListComponent extends Component {
         }
     }
 
-    mapUsersToListOfusers(users) {
+    mapUsersToListOfusers(users:Array<User>):Array<FilteredUser> {
         return users.map(function (user, index) {
             return {
                 "isCollapsed": false,
@@ -24,13 +43,13 @@ export class UserListComponent extends Component {
         });
     }
 
-    prepareUserTitleForList(user) {
+    prepareUserTitleForList(user:User) {
         return `${user.name.first} ${user.name.last}`;
     }
 
-    toggleUser(id) {
+    toggleUser(id:number) {
         this.setState({
-            users: this.state.users.map((elem, index) => {
+            users: this.state.users.map((elem:FilteredUser, index:number) => {
                 if (id === elem.id) {
                     elem.isCollapsed = !elem.isCollapsed
                 }
@@ -39,9 +58,9 @@ export class UserListComponent extends Component {
         });
     }
 
-    filterUsers(inputValue){
+    filterUsers(inputValue:string){
         this.setState({
-            filteredUsers: this.state.users.filter(e=>this.prepareUserTitleForList(e.user).includes(inputValue))
+            filteredUsers: this.state.users.filter((e:FilteredUser)=>this.prepareUserTitleForList(e.user).includes(inputValue))
         });
     }
 
@@ -53,13 +72,13 @@ export class UserListComponent extends Component {
                     <Col>
                         <Row>
                             <InputGroup>
-                                <Input placeholder="Search user..." onChange={($event)=>this.filterUsers($event.target.value)} />
+                                <Input placeholder="Search user..." onChange={($event:React.ChangeEvent<HTMLInputElement>)=>this.filterUsers($event.target.value)} />
                             </InputGroup>
                         </Row>
                     </Col>
                 </div><br />
                 <ListGroup>
-                    {this.state.filteredUsers.map((e, key) =>
+                    {this.state.filteredUsers.map((e:FilteredUser, key:number) =>
                         <Fragment key={key}>
                             <ListGroupItem className="pointer" action onClick={() => this.toggleUser(e.id)}>{this.prepareUserTitleForList(e.user)}</ListGroupItem>
                             <Collapse isOpen={e.isCollapsed} >

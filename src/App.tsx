@@ -6,17 +6,33 @@ import './App.css';
 import { InitPageComponent } from './components/InitPageComponent';
 import { NavbarComponent } from './components/NavbarComponent';
 import { UserListComponent } from './components/UserListComponent';
+import { User } from './types/user';
 
-class App extends Component {
+export type AppState = {
+  users:Array<User>,
+  topUsers: Array<User>,
+  topUsersinfo:UsersInfo|null,
+  info: UsersInfo|null
+};
+
+export type UsersInfo = {
+    "seed": string,
+    "results": number,
+    "page": number,
+    "version": string
+}
+
+class App extends Component <any, AppState> {
   
   static USER_NUMER = 26
   static TOP_USER_NUMER = 3
 
-  constructor(props) {
+  constructor(props:any) {
     super(props);
     this.state = {
       users: [],
       topUsers: [],
+      topUsersinfo: null,
       info: null
     }
   }

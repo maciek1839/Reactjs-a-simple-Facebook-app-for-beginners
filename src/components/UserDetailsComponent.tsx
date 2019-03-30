@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card, CardImg, Col, Row } from 'reactstrap';
 
-export class UserDetailsComponent extends Component {
+export class UserDetailsComponent extends Component<any, any> {
 
     render() {
         return (
