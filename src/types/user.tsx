@@ -1,5 +1,3 @@
-
-
 export type User = {
     "gender": string,
         "name": {
