@@ -1,5 +1,9 @@
 # Reactjs - a simple Facebook app for beginners
-A simple project based on React.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/10622421-5304-4a52-83e8-9279f7904bab/deploy-status)](https://app.netlify.com/sites/lucid-wright-a3e8ed/deploys)
+ 
+Live demo: https://react-simple-facebook-app-beginner.netlify.app/
+
+A simple project based on React. 
 
 - YouTube video [ENG]
     - https://www.youtube.com/watch?v=k5uVrwpW1tA
@@ -9,7 +13,7 @@ A simple project based on React.
     - https://www.youtube.com/watch?v=A_rrMXLwyqI
   
 ***BE AWARE!***   
-**The project uses React 16.7. A version 16.8 introduced new hook ``useEffect`` which replaces old hooks: ``componentDidMount``, ``componentDidUpdate`` and ``componentWillUnmount``. More info here: https://reactjs.org/docs/hooks-effect.html**  
+**The project uses React 16.7. A version 16.8 introduced a new hook ``useEffect`` which replaces old hooks: ``componentDidMount``, ``componentDidUpdate`` and ``componentWillUnmount``. More info here: https://reactjs.org/docs/hooks-effect.html**  
   
 
 ## Technology stack
