@@ -1,25 +1,24 @@
-import React, { Component } from 'react';
-import { Card, CardBody, CardImg, CardSubtitle, CardText, CardTitle, Col, Container, Row } from 'reactstrap';
-import { AnyCnameRecord } from 'dns';
-import { User } from '../types/user';
+import React, {Component} from 'react';
+import {Card, CardBody, CardImg, CardSubtitle, CardText, CardTitle, Col, Container, Row} from 'reactstrap';
+import {User} from '../types/user';
 
 export type InitPageComponentProps = {
-  topUsers:Array<User>
+  topUsers: Array<User>
 }
 
 export type InitPageComponentState = {
-  activeIndex:number
+  activeIndex: number
 }
 
 export class InitPageComponent extends Component <InitPageComponentProps, InitPageComponentState> {
 
-  static defaultProps = { 
-    topUsers: [] 
+  static defaultProps = {
+    topUsers: []
   }
 
-  constructor(props:InitPageComponentProps) {
+  constructor(props: InitPageComponentProps) {
     super(props);
-    this.state = { activeIndex: 0 };
+    this.state = {activeIndex: 0};
   }
 
   render() {
@@ -28,16 +27,18 @@ export class InitPageComponent extends Component <InitPageComponentProps, InitPa
         <h1 className="center maring-bottom">Top faces</h1>
         <Row>
           {
-            this.props.topUsers.map((user:User, index:number) => {
+            this.props.topUsers.map((user: User, index: number) => {
               const userName = `${user.name.first} ${user.name.last}`;
-              return <Col sm={12 / this.props.topUsers.length} key={index}><Card >
-                <CardImg top src={user.picture.large} alt={userName} />
-                <CardBody>
-                  <CardTitle>{userName}</CardTitle>
-                  <CardSubtitle>{user.email}</CardSubtitle>
-                  <CardText>Where you can find me? {user.location.city}</CardText>
-                </CardBody>
-              </Card></Col>
+              return <Col sm={12 / this.props.topUsers.length} key={index}>
+                <Card className="person-card">
+                  <CardImg src={user.picture.large} alt={userName} className="img-person-card" />
+                  <CardBody>
+                    <CardTitle>{userName}</CardTitle>
+                    <CardSubtitle><b>Email:</b> {user.email}</CardSubtitle>
+                    <CardText><b>Where can you find me?</b> {user.location.city}</CardText>
+                  </CardBody>
+                </Card>
+              </Col>
             })
           }
         </Row>
@@ -46,4 +47,4 @@ export class InitPageComponent extends Component <InitPageComponentProps, InitPa
   }
 }
 
-InitPageComponent.defaultProps = { topUsers: [] }
+InitPageComponent.defaultProps = {topUsers: []}

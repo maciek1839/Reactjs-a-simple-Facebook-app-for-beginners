@@ -24,7 +24,7 @@ export class UserDetailsComponent extends Component<any, any> {
                         <Col>{`State: ${this.props.user.location.state}`}</Col>
                     </Row>
                     <Row>
-                        <Col>{`Street: ${this.props.user.location.street}`}</Col>
+                        <Col>{`Street: ${this.props.user.location.street.name}`}</Col>
                     </Row>
                 </Col>
                 <Col>
