@@ -7,9 +7,13 @@ A simple project based on React.
     - https://www.youtube.com/watch?v=XiN8EvXkxKo
 - Add Typescript to existing ReactJs project [ENG]
     - https://www.youtube.com/watch?v=A_rrMXLwyqI
+  
+***BE AWARE!***   
+**The project uses React 16.7. A version 16.8 introduced new hook ``useEffect`` which replaces old hooks: ``componentDidMount``, ``componentDidUpdate`` and ``componentWillUnmount``. More info here: https://reactjs.org/docs/hooks-effect.html**  
+  
 
 ## Technology stack
-- React
+- React 16.7
 - Typescript (initially a project was bootstraped without Typescript, then it was migrated)
 - Reactstrap
 - Axios (http library)
