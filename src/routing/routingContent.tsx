@@ -8,7 +8,9 @@ import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 
 interface RoutingContentProps {
   topUsers: User[];
+  isErrorDuringLoadingTopUsers: boolean;
   users: User[];
+  isErrorDuringLoadingUsers: boolean;
 }
 
 const RoutingContent: React.FC<RoutingContentProps> = (props: RoutingContentProps) => (
@@ -16,10 +18,16 @@ const RoutingContent: React.FC<RoutingContentProps> = (props: RoutingContentProp
     <Switch>
       <Route path={'/' + ApplicationRoutePrefix.HOME}
              exact
-             component={() => <InitPageContainer topUsers={props.topUsers}/>}/>
+             component={() => <InitPageContainer
+               isErrorDuringLoading={props.isErrorDuringLoadingTopUsers}
+               topUsers={props.topUsers}/>
+             }/>
       <Route path={'/' + ApplicationRoutePrefix.USER_LIST}
              exact
-             component={() => <UserListPageContainer users={props.users}/>}/>
+             component={() => <UserListPageContainer
+               isErrorDuringLoading={props.isErrorDuringLoadingUsers}
+               users={props.users}/>
+             }/>
       <Route path={'/' + ApplicationRoutePrefix.NOT_FOUND} component={NotFoundPage}/>
       <Redirect to={'/' + ApplicationRoutePrefix.NOT_FOUND}/>
     </Switch>

@@ -1,28 +1,20 @@
 import React, {Component} from 'react';
-import {Card, CardBody, Collapse, Form, Input, InputGroup, ListGroup, ListGroupItem} from 'reactstrap';
+import {Alert, Card, CardBody, Collapse, Form, Input, InputGroup, ListGroup, ListGroupItem} from 'reactstrap';
 import {User} from '../../types/user';
 import {UserDetailsComponent} from './components/UserDetailsComponent/UserDetailsComponent';
+import {FilteredUser} from '../../types/filtered-user';
 
-export type UserListComponentProp = {
-  users: Array<User>
+interface UserListComponentProp {
+  users: Array<User>,
+  isErrorDuringLoading: boolean
 }
 
-export type UserListComponentState = {
+interface UserListComponentState {
   users: Array<FilteredUser>,
   filteredUsers: Array<FilteredUser>
 }
 
-export type FilteredUser = {
-  "isCollapsed": boolean,
-  "user": User,
-  "id": number
-}
-
 export class UserListPageContainer extends Component<UserListComponentProp, UserListComponentState> {
-
-  static defaultProps = {
-    users: []
-  }
 
   constructor(props: UserListComponentProp) {
     super(props);
@@ -59,52 +51,52 @@ export class UserListPageContainer extends Component<UserListComponentProp, User
   }
 
   filterUsers(inputValue: string) {
-    this.setState({
-      filteredUsers: this.state.users.filter((e: FilteredUser) => this.prepareUserTitleForList(e.user).includes(inputValue))
-    });
+    if (this.state.users && this.state.users.length > 0) {
+      this.setState({
+        filteredUsers: this.state.users.filter((e: FilteredUser) => this.prepareUserTitleForList(e.user).includes(inputValue))
+      });
+    }
+  }
+
+  renderErrorMessageIfNecessary(isErrorDuringLoading: boolean): JSX.Element | null {
+    return isErrorDuringLoading ? <Alert color="danger">
+      Error during loading users! Please refresh the page.
+    </Alert> : null;
   }
 
   render() {
     return <React.Fragment>
       <h1>User list</h1>
-      {
-        this.props.users.length === 0 ?
-          <div>No available users :(</div> :
-          <React.Fragment>
-            <Form className="element-m-spacing-v">
-              <InputGroup>
-                <Input placeholder="Search user..."
-                       onChange={($event: React.ChangeEvent<HTMLInputElement>) =>
-                         this.filterUsers($event.target.value)
-                       }/>
-              </InputGroup>
-            </Form>
-            <ListGroup>
-              {this.generateUsersList()}
-            </ListGroup>
-          </React.Fragment>
-      }
+      <Form className="element-m-spacing-v">
+        <InputGroup>
+          <Input placeholder="Search user..."
+                 onChange={($event: React.ChangeEvent<HTMLInputElement>) =>
+                   this.filterUsers($event.target.value)
+                 }/>
+        </InputGroup>
+      </Form>
+      {this.renderErrorMessageIfNecessary(this.props.isErrorDuringLoading)}
+      <ListGroup>
+        {this.generateUsersList()}
+      </ListGroup>
     </React.Fragment>;
   }
 
-  private generateUsersList() {
-    return <>
-      {this.state.filteredUsers.map((e: FilteredUser, key: number) =>
-        <React.Fragment key={key}>
-          <ListGroupItem className="pointer"
-                         action
-                         onClick={() => this.toggleUser(e.id)}>
-            {this.prepareUserTitleForList(e.user)}
-          </ListGroupItem>
-          <Collapse isOpen={e.isCollapsed}>
-            <Card>
-              <CardBody>
-                <UserDetailsComponent user={e.user}/>
-              </CardBody>
-            </Card>
-          </Collapse>
-        </React.Fragment>)
-      }
-    </>;
+  private generateUsersList(): JSX.Element[] {
+    return this.state.filteredUsers ? this.state.filteredUsers.map((e: FilteredUser, key: number) =>
+      <React.Fragment key={key}>
+        <ListGroupItem className="pointer"
+                       action
+                       onClick={() => this.toggleUser(e.id)}>
+          {this.prepareUserTitleForList(e.user)}
+        </ListGroupItem>
+        <Collapse isOpen={e.isCollapsed}>
+          <Card>
+            <CardBody>
+              <UserDetailsComponent user={e.user}/>
+            </CardBody>
+          </Card>
+        </Collapse>
+      </React.Fragment>) : [<Alert color="warning">No available users</Alert>];
   }
 }

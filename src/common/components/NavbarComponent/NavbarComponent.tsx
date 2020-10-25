@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink} from 'reactstrap';
 import {ApplicationRoutePrefix} from '../../../routing/routes';
+import {Link} from 'react-router-dom';
 
 export type NavbarComponentState= {
   isOpen:boolean
@@ -34,10 +35,10 @@ export class NavbarComponent extends Component<NavbarComponentProps,NavbarCompon
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href={'/'+ApplicationRoutePrefix.HOME}>Home</NavLink>
+              <NavLink tag={Link} to={'/'+ApplicationRoutePrefix.HOME}>Home</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href={'/'+ApplicationRoutePrefix.USER_LIST}>User list</NavLink>
+              <NavLink tag={Link} to={'/'+ApplicationRoutePrefix.USER_LIST}>User list</NavLink>
             </NavItem>
           </Nav>
         </Collapse>
