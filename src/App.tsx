@@ -67,7 +67,7 @@ class App extends Component <any, AppState> {
   render() {
     return (
       <Fragment>
-        <NavbarComponent></NavbarComponent>
+        <NavbarComponent/>
         <Container>
           <Router>
             <Row>
