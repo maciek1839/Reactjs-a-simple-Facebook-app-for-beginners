@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Facebook - book of people",
+  "name": "Reactjs - a simple Facebook app for beginners",
   "icons": [
     {
       "src": "favicon.ico",

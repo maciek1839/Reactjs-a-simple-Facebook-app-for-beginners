@@ -3,18 +3,19 @@
  
 Live demo: https://react-simple-facebook-app-beginner.netlify.app/
 
+![Online demo](online-demo.gif)
+
 A simple project based on React. 
 
-- YouTube video [ENG]
-    - https://www.youtube.com/watch?v=k5uVrwpW1tA
-- YouTube video [PL]
-    - https://www.youtube.com/watch?v=XiN8EvXkxKo
-- Add Typescript to existing ReactJs project [ENG]
+- ReactJS tutorial - How to create first app? Building facebooka. Course for beginners. [ENG]
+    - https://www.youtube.com/watch?v=k5uVrwpW1tA&list=PLRkaFIl3mgdXYPTZ2nUiJKNY30wV7ZxZn&ab_channel=ShowMeYourCode%21
+- ReactJS tutorial - Jak utworzyć pierwszą aplikację? Budujemy facebooka. Kurs dla początkujących [PL]
+    - https://www.youtube.com/watch?v=XiN8EvXkxKo&list=PLRkaFIl3mgdXdOVqcCpjtBGF_OuTueSUf&index=1&ab_channel=ShowMeYourCode%21
+- How to add Typescript to existing ReactJS project? Step by step tutorial [ENG]
     - https://www.youtube.com/watch?v=A_rrMXLwyqI
   
 ***BE AWARE!***   
 **The project uses React 16.7. A version 16.8 introduced a new hook ``useEffect`` which replaces old hooks: ``componentDidMount``, ``componentDidUpdate`` and ``componentWillUnmount``. More info here: https://reactjs.org/docs/hooks-effect.html**  
-  
 
 ## Technology stack
 - React 16.7
