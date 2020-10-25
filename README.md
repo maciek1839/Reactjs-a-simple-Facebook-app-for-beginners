@@ -7,10 +7,8 @@ Live demo: https://react-simple-facebook-app-beginner.netlify.app/
 
 A simple project based on React. 
 
-- ReactJS tutorial - How to create first app? Building facebooka. Course for beginners. [ENG]
+- ReactJS tutorial - How to create first app? Building a facebook app. Course for beginners. [ENG]
     - https://www.youtube.com/watch?v=k5uVrwpW1tA&list=PLRkaFIl3mgdXYPTZ2nUiJKNY30wV7ZxZn&ab_channel=ShowMeYourCode%21
-- ReactJS tutorial - Jak utworzyć pierwszą aplikację? Budujemy facebooka. Kurs dla początkujących [PL]
-    - https://www.youtube.com/watch?v=XiN8EvXkxKo&list=PLRkaFIl3mgdXdOVqcCpjtBGF_OuTueSUf&index=1&ab_channel=ShowMeYourCode%21
 - How to add Typescript to existing ReactJS project? Step by step tutorial [ENG]
     - https://www.youtube.com/watch?v=A_rrMXLwyqI
 - Generate React component using CLI [ENG]
