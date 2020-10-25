@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Card, CardBody, CardImg, CardSubtitle, CardText, CardTitle, Col, Container, Row} from 'reactstrap';
-import {User} from '../types/user';
+import {User} from '../../types/user';
+import './InitPageComponent.scss';
 
 export type InitPageComponentProps = {
   topUsers: Array<User>
@@ -10,7 +11,7 @@ export type InitPageComponentState = {
   activeIndex: number
 }
 
-export class InitPageComponent extends Component <InitPageComponentProps, InitPageComponentState> {
+export class InitPageContainer extends Component <InitPageComponentProps, InitPageComponentState> {
 
   static defaultProps = {
     topUsers: []
@@ -24,7 +25,7 @@ export class InitPageComponent extends Component <InitPageComponentProps, InitPa
   render() {
     return (
       <Container>
-        <h1 className="center maring-bottom">Top faces</h1>
+        <h1 className="txt-alg-cent">Top faces</h1>
         <Row>
           {
             this.props.topUsers.map((user: User, index: number) => {
@@ -46,5 +47,3 @@ export class InitPageComponent extends Component <InitPageComponentProps, InitPa
     );
   }
 }
-
-InitPageComponent.defaultProps = {topUsers: []}

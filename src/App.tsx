@@ -1,33 +1,32 @@
 import axios from 'axios';
 import React, {Component, Fragment} from 'react';
-import {BrowserRouter as Router, Route} from "react-router-dom";
-import {Col, Container, Row} from 'reactstrap';
+import {Container} from 'reactstrap';
 import './App.scss';
-import {InitPageComponent} from './components/InitPageComponent';
-import {NavbarComponent} from './components/NavbarComponent';
-import {UserListComponent} from './components/UserListComponent';
 import {User} from './types/user';
+import RoutingContent from './routing/routingContent';
+import {NavbarComponent} from './common/components/NavbarComponent/NavbarComponent';
+import {BrowserRouter} from 'react-router-dom';
 
 export type AppState = {
-  users:Array<User>,
+  users: Array<User>,
   topUsers: Array<User>,
-  topUsersInfo:UsersInfo|null,
-  info: UsersInfo|null
+  topUsersInfo: UsersInfo | null,
+  info: UsersInfo | null
 };
 
 export type UsersInfo = {
-    "seed": string,
-    "results": number,
-    "page": number,
-    "version": string
+  "seed": string,
+  "results": number,
+  "page": number,
+  "version": string
 }
 
 class App extends Component <any, AppState> {
-  
-  static USER_NUMER = 26
-  static TOP_USER_NUMER = 3
 
-  constructor(props:any) {
+  static readonly USER_NUMER = 26;
+  static readonly TOP_USER_NUMER = 3;
+
+  constructor(props: any) {
     super(props);
     this.state = {
       users: [],
@@ -69,14 +68,9 @@ class App extends Component <any, AppState> {
       <Fragment>
         <NavbarComponent/>
         <Container>
-          <Router>
-            <Row>
-              <Col xs="12">
-                  <Route exact path="/" component={() => <InitPageComponent topUsers={this.state.topUsers} />} />
-                  <Route path="/users" component={() => <UserListComponent users={this.state.users} />} />
-              </Col>
-            </Row>
-          </Router>
+          <BrowserRouter>
+            <RoutingContent topUsers={this.state.topUsers} users={this.state.users}/>
+          </BrowserRouter>
         </Container>
       </Fragment>
     );

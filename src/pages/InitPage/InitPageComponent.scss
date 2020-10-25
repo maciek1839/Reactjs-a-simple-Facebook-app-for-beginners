@@ -1,0 +1,15 @@
+/*
+If you don't know the unit "rem", you can change it to "px" (pixel)
+but be aware that 1 rem = 16px usually.
+*/
+
+.person-card {
+  margin: 0.25rem;
+}
+
+.img-person-card {
+  max-width: 12.5rem;
+  max-height: 12.5rem;
+  margin: auto;
+  padding: 0.25rem;
+}
