@@ -1,17 +1,17 @@
 import axios from 'axios';
-import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Col, Container, Row } from 'reactstrap';
-import './App.css';
-import { InitPageComponent } from './components/InitPageComponent';
-import { NavbarComponent } from './components/NavbarComponent';
-import { UserListComponent } from './components/UserListComponent';
-import { User } from './types/user';
+import React, {Component, Fragment} from 'react';
+import {BrowserRouter as Router, Route} from "react-router-dom";
+import {Col, Container, Row} from 'reactstrap';
+import './App.scss';
+import {InitPageComponent} from './components/InitPageComponent';
+import {NavbarComponent} from './components/NavbarComponent';
+import {UserListComponent} from './components/UserListComponent';
+import {User} from './types/user';
 
 export type AppState = {
   users:Array<User>,
   topUsers: Array<User>,
-  topUsersinfo:UsersInfo|null,
+  topUsersInfo:UsersInfo|null,
   info: UsersInfo|null
 };
 
@@ -32,7 +32,7 @@ class App extends Component <any, AppState> {
     this.state = {
       users: [],
       topUsers: [],
-      topUsersinfo: null,
+      topUsersInfo: null,
       info: null
     }
   }
@@ -56,7 +56,7 @@ class App extends Component <any, AppState> {
         console.log("Successfully fetched top user!", response);
         this.setState({
           topUsers: response.data.results,
-          topUsersinfo: response.data.info
+          topUsersInfo: response.data.info
         });
       })
       .catch(function (error) {
@@ -72,10 +72,8 @@ class App extends Component <any, AppState> {
           <Router>
             <Row>
               <Col xs="12">
-                <Fragment>
                   <Route exact path="/" component={() => <InitPageComponent topUsers={this.state.topUsers} />} />
                   <Route path="/users" component={() => <UserListComponent users={this.state.users} />} />
-                </Fragment>
               </Col>
             </Row>
           </Router>
