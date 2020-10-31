@@ -1,10 +1,10 @@
 import {Redirect, Route, Switch} from 'react-router-dom';
 import React from 'react';
 import {User} from '../types/user';
-import {InitPageContainer} from '../pages/InitPage/InitPageContainer';
 import {UserListPageContainer} from '../pages/UserListPage/UserListPageContainer';
 import {ApplicationRoutePrefix} from './routes';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
+import {HomePageContainer} from '../pages/HomePage/HomePageContainer';
 
 interface RoutingContentProps {
   topUsers: User[];
@@ -18,7 +18,7 @@ const RoutingContent: React.FC<RoutingContentProps> = (props: RoutingContentProp
     <Switch>
       <Route path={'/' + ApplicationRoutePrefix.HOME}
              exact
-             component={() => <InitPageContainer
+             component={() => <HomePageContainer
                isErrorDuringLoading={props.isErrorDuringLoadingTopUsers}
                topUsers={props.topUsers}/>
              }/>

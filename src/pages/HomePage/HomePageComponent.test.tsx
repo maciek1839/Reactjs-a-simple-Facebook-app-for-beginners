@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import InitPageComponent from './InitPageContainer';
+import InitPageComponent from './HomePageContainer';
 
 describe('<InitPageContainer />', () => {
   let component;

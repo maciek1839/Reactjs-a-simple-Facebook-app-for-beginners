@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Alert, Card, CardBody, CardImg, CardSubtitle, CardText, CardTitle, Col, Container, Row} from 'reactstrap';
 import {User} from '../../types/user';
-import './InitPageComponent.scss';
+import './HomePageComponent.scss';
 
 export type InitPageComponentProps = {
   topUsers: Array<User>,
@@ -12,7 +12,7 @@ export type InitPageComponentState = {
   activeIndex: number
 }
 
-export class InitPageContainer extends Component <InitPageComponentProps, InitPageComponentState> {
+export class HomePageContainer extends Component <InitPageComponentProps, InitPageComponentState> {
 
   constructor(props: InitPageComponentProps) {
     super(props);
